@@ -16,10 +16,10 @@ app.use(cookieParser())
 
 // Socket
 const http = require('http').createServer(app)
-const io = require('socket.io')(http,{
+const io = require('socket.io')(http, {
     cors: {
-        origins: ["http://localhost:3000"]
-      }
+        origins: ["http://localhost:3000", "https://dating-fe-livid.vercel.app"]
+    }
 })
 
 
@@ -49,11 +49,11 @@ mongoose.connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, err => {
-    if(err) throw err;
+    if (err) throw err;
     console.log('Connected to mongodb')
 })
 
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
