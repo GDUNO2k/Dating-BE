@@ -19,7 +19,7 @@ app.use(cookieParser())
 
 
 // Socket
-const http = require('http').createServer(app)
+const http = require('https').createServer(app)
 const io = require('socket.io')(http, {
     cors: {
         origins: "https://dating-fe-livid.vercel.app",
