@@ -19,7 +19,10 @@ app.use(cookieParser())
 
 
 // Socket
-const http = require('https').createServer(app)
+const port = process.env.PORT || 5000
+const http = app.listen(port, () => {
+    console.log('Server is running on port', port)
+})
 const io = require('socket.io')(http, {
     cors: {
         origins: "https://dating-fe-livid.vercel.app",
@@ -66,7 +69,3 @@ mongoose.connect(URI, {
 // }
 
 
-const port = process.env.PORT || 5000
-http.listen(port, () => {
-    console.log('Server is running on port', port)
-})
