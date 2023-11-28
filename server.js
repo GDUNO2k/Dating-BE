@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(cors({
     origin: ["http://localhost:3000", "https://dating-fe-livid.vercel.app"],
     methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS", "HEAD"],
+    credentials: true
 }))
 app.use(cookieParser())
 
@@ -21,7 +22,8 @@ app.use(cookieParser())
 const http = require('http').createServer(app)
 const io = require('socket.io')(http, {
     cors: {
-        origins: "https://dating-fe-livid.vercel.app"
+        origins: "https://dating-fe-livid.vercel.app",
+        credentials: true,
     }
 })
 
