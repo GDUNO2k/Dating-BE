@@ -10,7 +10,10 @@ const path = require('path')
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["http://localhost:3000", "https://dating-fe-livid.vercel.app"],
+    methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS", "HEAD"],
+}))
 app.use(cookieParser())
 
 
